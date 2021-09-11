@@ -1,0 +1,19 @@
+@font-face {
+    font-family: 'Supply';
+    src: url('./fonts/Supply-Bold.woff2') format('woff2');
+    font-weight: 700;
+}
+@font-face {
+    font-family: 'Supply';
+    src: url('./fonts/Supply-Regular.woff2') format('woff2');
+    font-weight: 400;
+}
+@font-face {
+    font-family: 'Supply';
+    src: url('./fonts/Supply-UltraLight.woff2') format('woff2');
+    font-weight: 200;
+}
+@font-face {
+    font-family: 'Pangram Sans';
+    src: url('./fonts/Pangram-Regular.woff2') format(('woff2'));
+}

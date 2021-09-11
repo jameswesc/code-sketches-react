@@ -1,0 +1,1 @@
+export { useSeededColorPalette } from './useSeededColorPalette';
