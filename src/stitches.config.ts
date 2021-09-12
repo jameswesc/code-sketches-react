@@ -1,4 +1,4 @@
-import { gray, indigo } from '@radix-ui/colors';
+import { gray, indigo, pink, blackA, whiteA } from '@radix-ui/colors';
 import { createStitches } from '@stitches/react';
 import type * as Stitches from '@stitches/react';
 
@@ -7,6 +7,10 @@ export const { styled, globalCss } = createStitches({
         colors: {
             ...gray,
             ...indigo,
+            ...pink,
+
+            ...blackA,
+            ...whiteA,
         },
         space: {
             1: '5px',
@@ -16,7 +20,7 @@ export const { styled, globalCss } = createStitches({
         },
         fonts: {
             supply: `'Supply', monospace`,
-            pangram: `'Pangram Sans', sans-serif`,
+            objectSans: `'Object Sans', sans-serif`,
         },
     },
     utils: {

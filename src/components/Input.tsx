@@ -8,9 +8,11 @@ export const Input = styled('input', {
     border: '1px solid $indigo6',
     color: '$indigo11',
 
-    paddingLeft: 10,
+    paddingLeft: '$1',
 
     fontFamily: '$supply',
+
+    width: '100%',
 
     '&:hover': {
         backgroundColor: '$indigo3',

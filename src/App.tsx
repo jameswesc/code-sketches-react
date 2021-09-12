@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Layout from '@/features/sketchLayout';
-import { Sketch, Controls } from '@/sketches/physicalMaterials';
+import { Sketch, Controls } from '@/sketches/isoBoxSketch';
 
 function App(): JSX.Element {
     return <Layout sketch={<Sketch />} controls={<Controls />} />;
