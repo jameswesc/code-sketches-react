@@ -3,7 +3,7 @@ import { SeedRandom, SeedReset, SeedInput } from '@/features/seed';
 import { DownloadFrameButton } from '@/features/frameExporter';
 import { styled } from '@/stitches.config';
 import { ControlsRoot } from '@/features/controlsGroup';
-import { R3fCanvasControls } from '@/features/r3fCanvas';
+import { ResolutionControls } from '@/features/resolution';
 
 const Grid = styled('div', {
     display: 'grid',
@@ -22,7 +22,7 @@ export function Controls() {
                 <DownloadFrameButton prefix="cs" />
             </Grid>
             <>
-                <R3fCanvasControls />
+                <ResolutionControls />
             </>
         </ControlsRoot>
     );

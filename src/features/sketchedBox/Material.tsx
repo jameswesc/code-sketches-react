@@ -67,26 +67,30 @@ export function PlaneMaterial({
             }}
             varyings={{
                 v_uv: { type: 'vec2' },
+                v_xy: { type: 'vec2' },
             }}
         >
             <Material.Vert.Body>
                 {`
-                v_uv = uv * u_size;
+                v_uv = uv;
+                v_xy = uv * u_size;
                 `}
             </Material.Vert.Body>
             <Material.Frag.Body>
                 {`
-                float left = smoothstep(0.9 * u_left, 1.1 * u_left, v_uv.x);
-                float bottom = smoothstep(0.9 * u_bottom, 1.1 * u_bottom, v_uv.y);
-
-                float right = smoothstep(0.9 * u_right, 1.1 * u_right, u_size.x - v_uv.x);                
-                float top = smoothstep(0.9 * u_top, 1.1 * u_top, u_size.y -  v_uv.y);
-
-                float draw = bottom * top * left * right;
-
-                vec3 color = mix(u_stroke, u_color, vec3(draw));
+                float left = smoothstep(0.9 * u_left, 1.1 * u_left, v_xy.x);
+                float bottom = smoothstep(0.9 * u_bottom, 1.1 * u_bottom, v_xy.y);
+                float right = smoothstep(0.9 * u_right, 1.1 * u_right, u_size.x - v_xy.x);                
+                float top = smoothstep(0.9 * u_top, 1.1 * u_top, u_size.y - v_xy.y);
+                
+                float drawColor = bottom * top * left * right;
 
 
+                // float middle1 = step(0.3, v_uv.x);
+                // float middle2 = step(0.68, 1.0 - v_uv.x);
+                // drawColor *= abs(middle1 * middle2 - 1.0);
+                
+                vec3 color = mix(u_stroke, u_color, vec3(drawColor));
                 gl_FragColor = vec4(color, 1.0);
                 `}
             </Material.Frag.Body>

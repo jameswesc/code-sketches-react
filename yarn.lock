@@ -335,6 +335,14 @@
     "@radix-ui/react-polymorphic" "0.0.11"
     "@radix-ui/react-primitive" "0.0.13"
 
+"@radix-ui/react-aspect-ratio@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-aspect-ratio/-/react-aspect-ratio-0.1.0.tgz#9db116f09530e73a7cfd97263c386d7d9a37bae8"
+  integrity sha512-FobFpTaPWB/uo82aloYt+Y/ohSDpOrkR0cldT2fFLSUgM44+b7RwyDJI6GMSrT/ehhq8ZMrT3KMkVlT2xN4AyA==
+  dependencies:
+    "@babel/runtime" "^7.13.10"
+    "@radix-ui/react-primitive" "0.1.0"
+
 "@radix-ui/react-checkbox@^0.1.0":
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/@radix-ui/react-checkbox/-/react-checkbox-0.1.0.tgz#2d70e5620292cc56ead0aecaba3adc145fcf0c1e"
