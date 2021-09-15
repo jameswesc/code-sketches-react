@@ -6,4 +6,5 @@ export const useResolutionStore = create<IResolution>(() => ({
     ratio: 1,
     width: 400,
     height: 400,
+    objectFit: 'cover',
 }));

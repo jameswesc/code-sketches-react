@@ -1,4 +1,4 @@
 export { AABBLayout } from './AABBLayout';
-export { Controls as AABBControls } from './Controls';
+export { AABBControls } from './AABBControls';
 
 export type { IAABB, IAABLayout } from './types';

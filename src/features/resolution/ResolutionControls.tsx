@@ -24,7 +24,7 @@ const Flex = styled('div', {
 });
 
 export function ResolutionControls() {
-    const { height, width, mode, ratio } = useResolutionStore();
+    const { height, width, mode, ratio, objectFit } = useResolutionStore();
 
     return (
         <Stack>
@@ -73,35 +73,61 @@ export function ResolutionControls() {
                 </ControlsRow>
             )}
             {mode === 'set' && (
-                <ControlsRow>
-                    <Type size="xs" align="right">
-                        W x H:
-                    </Type>
-                    <Flex>
+                <>
+                    <ControlsRow>
+                        <Type size="xs" align="right">
+                            W x H:
+                        </Type>
+                        <Flex>
+                            <Input
+                                type="number"
+                                size="sm"
+                                width="third"
+                                value={width || ''}
+                                onChange={(e) => {
+                                    useResolutionStore.setState({
+                                        width: +e.target.value,
+                                    });
+                                }}
+                            />
+                            <Input
+                                type="number"
+                                size="sm"
+                                width="third"
+                                value={height || ''}
+                                onChange={(e) => {
+                                    useResolutionStore.setState({
+                                        height: +e.target.value,
+                                    });
+                                }}
+                            />
+                        </Flex>
+                    </ControlsRow>
+                    <ControlsRow>
+                        <Type size="xs" align="right">
+                            Fit
+                        </Type>
                         <Input
-                            type="number"
+                            as="select"
                             size="sm"
-                            width="third"
-                            value={width || ''}
-                            onChange={(e) => {
+                            width="twoThirds"
+                            value={objectFit}
+                            onChange={(e: any) => {
+                                // @ts-ignore: Cant be bothered typing this
                                 useResolutionStore.setState({
-                                    width: +e.target.value,
+                                    objectFit: e.target.value,
                                 });
                             }}
-                        />
-                        <Input
-                            type="number"
-                            size="sm"
-                            width="third"
-                            value={height || ''}
-                            onChange={(e) => {
-                                useResolutionStore.setState({
-                                    height: +e.target.value,
-                                });
-                            }}
-                        />
-                    </Flex>
-                </ControlsRow>
+                        >
+                            <Type as="option" size="xs" value="cover">
+                                Cover
+                            </Type>
+                            <Type as="option" size="xs" value="contain">
+                                Contain
+                            </Type>
+                        </Input>
+                    </ControlsRow>
+                </>
             )}
         </Stack>
     );

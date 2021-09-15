@@ -27,6 +27,7 @@
         "open-simplex-noise": "^2.5.0",
         "react": "^17.0.2",
         "react-dom": "^17.0.2",
+        "react-use-measure": "^2.0.4",
         "three": "^0.132.2",
         "zundo": "^1.1.0",
         "zustand": "^3.5.10"

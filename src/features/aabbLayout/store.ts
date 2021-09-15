@@ -1,11 +1,7 @@
-import create, { SetState } from 'zustand';
+import create from 'zustand';
 import { IAABLayout } from './types';
 
-interface IStore extends IAABLayout {
-    set: SetState<IStore>;
-}
-
-export const useAABBControls = create<IStore>((set) => ({
+export const useAABBControls = create<IAABLayout>((set) => ({
     layers: 3,
     trials: 20,
     trialsFactor: 2,
@@ -14,5 +10,4 @@ export const useAABBControls = create<IStore>((set) => ({
     minSize: 0.1,
     maxSize: 10,
     sizeFactor: 0.5,
-    set,
 }));
