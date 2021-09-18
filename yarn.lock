@@ -863,6 +863,11 @@
     "@thi.ng/random" "^2.4.8"
     "@thi.ng/transducers" "^7.9.2"
 
+"@types/d3-array@^3.0.1":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@types/d3-array/-/d3-array-3.0.1.tgz#0ff28ee7052a2e504cb951d17df7437c33d442d6"
+  integrity sha512-D/G7oG0czeszALrkdUiV68CDiHDxXf+M2mLVqAyKktGd12VKQQljj1sHJGBKjcK4jRH1biBd6ZPQPHpJ0mNa0w==
+
 "@types/json-schema@^7.0.7":
   version "7.0.9"
   resolved "https://registry.npmjs.org/@types/json-schema/-/json-schema-7.0.9.tgz"
@@ -1262,6 +1267,13 @@ csstype@^3.0.2, csstype@^3.0.4:
   resolved "https://registry.npmjs.org/csstype/-/csstype-3.0.8.tgz"
   integrity sha512-jXKhWqXPmlUeoQnF/EhTtTl4C9SnrxSH/jZUih3jmO6lBKr99rP3/+FmrMj4EFpOXzMtXHAZkd3x0E6h6Fgflw==
 
+d3-array@^3.0.2:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/d3-array/-/d3-array-3.0.2.tgz#7a65593784cfc0150eee1aba8d3e69a6fe73be7b"
+  integrity sha512-nTN4OC6ufZueotlexbxBd2z8xmG1eIfhvP2m1auH2ONps0L+AZn1r0JWuzMXZ6XgOj1VBOp7GGZmEs9NUFEBbA==
+  dependencies:
+    internmap "1 - 2"
+
 debounce@^1.2.0:
   version "1.2.1"
   resolved "https://registry.npmjs.org/debounce/-/debounce-1.2.1.tgz"
@@ -1636,6 +1648,11 @@ for-in@^1.0.2:
   resolved "https://registry.npmjs.org/for-in/-/for-in-1.0.2.tgz"
   integrity sha1-gQaNKVqBQuwKxybG4iAMMPttXoA=
 
+fractal-noise@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/fractal-noise/-/fractal-noise-1.2.0.tgz#94bedcf499874d9b5c6e418be0edc74f86dbe071"
+  integrity sha512-H1B2d45cSDSlIsy+dA5/kpiTsHG4EEGQCt9jlWXj8o4Hq0vMXQ4MEVYHJPTYU4ehaSe9NwX0j1VEMfWCcfS4UA==
+
 fs.realpath@^1.0.0:
   version "1.0.0"
   resolved "https://registry.npmjs.org/fs.realpath/-/fs.realpath-1.0.0.tgz"
@@ -1819,6 +1836,11 @@ internal-slot@^1.0.3:
     get-intrinsic "^1.1.0"
     has "^1.0.3"
     side-channel "^1.0.4"
+
+"internmap@1 - 2":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/internmap/-/internmap-2.0.1.tgz#33d0fa016185397549fb1a14ea3dbe5a2949d1cd"
+  integrity sha512-Ujwccrj9FkGqjbY3iVoxD1VV+KdZZeENx0rphrtzmRXbFvkFO88L80BL/zeSIguX/7T+y8k04xqtgWgS5vxwxw==
 
 is-bigint@^1.0.1:
   version "1.0.4"
