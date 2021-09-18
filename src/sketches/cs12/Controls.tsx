@@ -3,9 +3,8 @@ import { SeedRandom, SeedReset, SeedInput } from '@/features/seed';
 import { DownloadFrameButton } from '@/features/frameExporter';
 import { styled } from '@/stitches.config';
 import { ControlsRoot } from '@/features/controlsGroup';
-import { ResolutionControls } from '@/features/resolution';
 
-const Grid = styled('div', {
+const ControlGrid = styled('div', {
     display: 'grid',
     gridAutoFlow: 'column',
     gridTemplateColumns: 'auto auto 1fr auto',
@@ -14,16 +13,13 @@ const Grid = styled('div', {
 
 export function Controls() {
     return (
-        <ControlsRoot css={{ bg: '$whiteA8' }}>
-            <Grid>
+        <ControlsRoot>
+            <ControlGrid>
                 <SeedReset />
                 <SeedRandom />
                 <SeedInput />
                 <DownloadFrameButton prefix="cs" />
-            </Grid>
-            <>
-                <ResolutionControls />
-            </>
+            </ControlGrid>
         </ControlsRoot>
     );
 }

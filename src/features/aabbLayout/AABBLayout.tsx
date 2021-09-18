@@ -5,7 +5,7 @@ import { useSeed } from '../seed';
 import { AABB } from './aabb';
 import { IAABB } from './types';
 import { makeRandPosFn, makeRandomSizeFn } from './utils';
-import { useAABBControls } from './store';
+import { useControls } from 'leva';
 
 export type AABBComponentProps = IAABB & { index: number };
 
@@ -25,7 +25,46 @@ export function AABBLayout({
         scaleFactor,
         trialsFactor,
         scale,
-    } = useAABBControls();
+    } = useControls(
+        'AABB Layout',
+        {
+            layers: {
+                value: 1,
+                min: 1,
+                max: 10,
+                step: 1,
+            },
+            trials: {
+                value: 40,
+                min: 1,
+            },
+            minSize: {
+                value: 0.1,
+                min: 0,
+            },
+            maxSize: {
+                value: 6,
+                min: 0,
+            },
+            sizeFactor: {
+                value: 1,
+                min: 0,
+            },
+            scaleFactor: {
+                value: 1,
+                min: 0,
+            },
+            scale: {
+                value: 10,
+                min: 0,
+            },
+            trialsFactor: {
+                value: 1,
+                min: 0,
+            },
+        },
+        { collapsed: true }
+    );
 
     const bounds: AABB[] = useMemo(() => {
         const rnd = new Smush32(seed);

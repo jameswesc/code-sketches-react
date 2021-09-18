@@ -11,6 +11,14 @@ export const { styled, globalCss } = createStitches({
 
             ...blackA,
             ...whiteA,
+
+            bg: '$whiteA5',
+            bgHover: '$whiteA8',
+            bgFocus: '$whiteA9',
+
+            line: '$whiteA9',
+            lineHover: '$whiteA10',
+            lineFocus: '$whiteA11',
         },
         space: {
             1: '5px',

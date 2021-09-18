@@ -1,6 +1,7 @@
 import React from 'react';
 import { styled } from '@/stitches.config';
 import { ReactNode } from 'react';
+import { DefaultControls } from './DefaultControls';
 
 const Fullscreen = styled('div', {
     position: 'fixed',
@@ -13,19 +14,19 @@ const Fullscreen = styled('div', {
 const Controls = styled('div', {
     position: 'fixed',
     top: '$2',
-    right: '$2',
+    left: '$2',
 });
 
 interface ILayout {
     sketch: ReactNode;
-    controls: ReactNode;
+    controls?: ReactNode;
 }
 
-export function Layout({ sketch, controls }: ILayout): JSX.Element {
+export function SketchLayout({ sketch, controls }: ILayout): JSX.Element {
     return (
         <>
             <Fullscreen>{sketch}</Fullscreen>
-            <Controls>{controls}</Controls>
+            <Controls>{controls ? controls : <DefaultControls />}</Controls>
         </>
     );
 }

@@ -1,6 +1,8 @@
 import { styled } from '@/stitches.config';
 
 export const Type = styled('div', {
+    color: 'black',
+
     variants: {
         font: {
             supply: {
@@ -20,18 +22,6 @@ export const Type = styled('div', {
             },
             bold: {
                 fontWeight: 700,
-            },
-        },
-
-        color: {
-            hiContrast: {
-                color: '$indigo12',
-            },
-            loContrast: {
-                color: '$indigo11',
-            },
-            base: {
-                color: 'black',
             },
         },
 
@@ -108,7 +98,7 @@ export const Type = styled('div', {
         font: 'supply',
         weight: 'base',
         size: 'base',
-        color: 'base',
+
         align: 'left',
     },
 });

@@ -4,19 +4,22 @@ export const IconButton = styled('button', {
     width: 30,
     height: 30,
 
-    backgroundColor: '$indigo4',
     display: 'inline-flex',
     alignItems: 'center',
     justifyContent: 'center',
-    border: '1px solid $indigo6',
-    color: '$indigo11',
+    color: 'black',
+
+    backgroundColor: '$bg',
+    border: '1px solid $line',
 
     '&:hover': {
-        backgroundColor: '$indigo5',
-        border: '1px solid $indigo7',
+        backgroundColor: '$bgHover',
+        border: '1px solid $lineHover',
     },
     '&:focus': {
-        border: '1px solid $indigo11',
+        backgroundColor: '$bgFocus',
+        border: '1px solid $lineFocus',
+        outline: 'none',
     },
     '&:disabled': {
         opacity: 0.3,

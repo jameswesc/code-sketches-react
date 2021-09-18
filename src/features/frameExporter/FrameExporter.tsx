@@ -1,8 +1,9 @@
 import { useFrame } from '@react-three/fiber';
 import canvasScreenshot from 'canvas-screenshot';
+import { useSeedStore } from '../seed/store';
 import { useStore } from './store';
 
-export function FrameExporter(): null {
+export function FrameExporter({ prefix }: { prefix?: string }): null {
     const clear = useStore((s) => s.clear);
 
     // This loop is needed in case there are no
@@ -18,8 +19,13 @@ export function FrameExporter(): null {
     // effect composer is 1).
     useFrame(({ gl }) => {
         if (useStore.getState().flag) {
+            // ([prefix]-)?[seed].png
+            const filename = `${prefix ? prefix + '-' : ''}${
+                useSeedStore.getState().seed
+            }.png`;
+
             canvasScreenshot(gl.domElement, {
-                filename: useStore.getState().filename,
+                filename,
             });
             clear();
         }

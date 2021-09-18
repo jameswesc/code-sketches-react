@@ -1,10 +1,10 @@
 import React from 'react';
 
-import Layout from '@/features/sketchLayout';
-import { Sketch, Controls } from '@/sketches/isoBoxSketch';
+import { SketchLayout } from '@/components/SketchLayout';
+import { Sketch } from '@/sketches/cs12';
 
 function App(): JSX.Element {
-    return <Layout sketch={<Sketch />} controls={<Controls />} />;
+    return <SketchLayout sketch={<Sketch />} />;
 }
 
 export default App;

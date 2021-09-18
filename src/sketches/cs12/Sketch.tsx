@@ -3,8 +3,7 @@ import { IsometricCanvas } from './IsometricCanvas';
 import { AABBLayout, IAABB } from '@/features/aabbLayout';
 import { SketchedBox } from '@/features/sketchedBox/Box';
 import { useSeededColorPalette } from '@/features/colorPalette';
-import { OrbitControls } from '@react-three/drei';
-import { ResolutionContainer } from '@/features/resolution';
+import { SketchSize } from '@/components/SketchSize';
 
 function MyBox({ position: [px, py, pz], size: [sx, sy, sz] }: IAABB) {
     const [cx, cy, cz, stroke] = useSeededColorPalette();
@@ -28,11 +27,10 @@ export function Sketch() {
     const [, , , , bg] = useSeededColorPalette();
 
     return (
-        <ResolutionContainer>
+        <SketchSize>
             <IsometricCanvas background={bg}>
                 <AABBLayout component={MyBox} />
-                {/* <OrbitControls /> */}
             </IsometricCanvas>
-        </ResolutionContainer>
+        </SketchSize>
     );
 }

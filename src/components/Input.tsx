@@ -1,18 +1,20 @@
 import { styled } from '@/stitches.config';
 
 export const Input = styled('input', {
-    backgroundColor: '$whiteA7',
+    backgroundColor: '$bg',
     color: 'black',
     paddingLeft: '$1',
     fontFamily: '$supply',
     outline: 'none',
+    border: '1px solid $line',
 
     '&:hover': {
-        backgroundColor: '$whiteA8',
-        border: '1px solid $indigo10',
+        backgroundColor: '$bgHover',
+        border: '1px solid $lineHover',
     },
     '&:focus': {
-        border: '1px solid $indigo11',
+        backgroundColor: '$bgFocus',
+        border: '1px solid $lineFocus',
     },
 
     variants: {
