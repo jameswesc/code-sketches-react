@@ -1,5 +1,8 @@
 import React, {
+    createContext,
+    ReactNode,
     useCallback,
+    useContext,
     useEffect,
     useMemo,
     useRef,
@@ -25,18 +28,8 @@ import { useControls } from 'leva';
 import { XY } from '@/types/xyz';
 import create from 'zustand';
 import { makeNoise2D } from 'open-simplex-noise';
-
-const useMouseIndex = create<{
-    x: number;
-    y: number;
-    setXY(xy: number[]): void;
-}>((set) => ({
-    x: 0,
-    y: 0,
-    setXY(xy: number[]) {
-        set({ x: xy[0], y: xy[1] });
-    },
-}));
+import { Smush32, uniform } from '@thi.ng/random';
+import { clamp } from 'three/src/math/MathUtils';
 
 function NoAutoClear() {
     const seed = useSeed();
@@ -60,66 +53,142 @@ function NoAutoClear() {
     return null;
 }
 
-function MyPoint({
-    xy: [x, y],
-    color,
-    xIndex,
-    yIndex,
-}: {
-    xy: XY;
-    color: string;
-    xIndex: number;
-    yIndex: number;
-}) {
-    const ref = useRef();
-    useEffect(
-        () =>
-            useMouseIndex.subscribe(({ x, y }) => {
-                if (ref.current) {
-                    if (x === xIndex && y === yIndex) {
-                        // @ts-ignore
-                        ref.current.color.setStyle('#ffff00');
-                    } else {
-                        // @ts-ignore
-                        ref.current.color.setStyle(color);
-                    }
-                }
-            }),
-        [ref]
-    );
-
-    // @ts-ignore
-    return <Point ref={ref} position={[x, y, 0]} color={color} />;
+interface ICell {
+    center: XY;
+    angle: number;
 }
 
-interface ICell {
-    index: XY;
-    center: XY;
+interface IGrid {
+    grid: ICell[][];
     radius: number;
     size: XY;
-    angle: number;
 }
 
 const { cos, sin, PI } = Math;
 
-function MyLine({ cell: { center, size, angle } }: { cell: ICell }) {
-    const [, stroke] = useSeededColorPalette();
-    const radius = 0.4 * Math.min(...size);
+const GridContext = createContext<IGrid>(undefined as any);
+
+function useGrid() {
+    return useContext(GridContext);
+}
+
+function DrawNoiseLines({ color = '#ffffff' }: { color?: string }) {
+    const { show } = useControls('Noise Lines', {
+        show: true,
+    });
+
+    const { grid, radius } = useGrid();
+
+    const cells = useMemo(() => {
+        console.log('TRIGGER');
+        return grid.flatMap((d) => d);
+    }, [grid]);
 
     return (
-        <group position-x={center[0]} position-y={center[1]}>
-            <Line
-                points={[
-                    [radius * cos(angle), radius * sin(angle), 0],
-                    [-radius * cos(angle), -radius * sin(angle), 0],
-                ]}
-                color={stroke}
-            />
+        <group>
+            {show &&
+                cells.map(({ center: [cx, cy], angle }, i) => (
+                    <group key={i} position-x={cx} position-y={cy}>
+                        <Line
+                            points={[
+                                [radius * cos(angle), radius * sin(angle), 0],
+                                [-radius * cos(angle), -radius * sin(angle), 0],
+                            ]}
+                            color={color}
+                            lineWidth={0.2}
+                        />
+                    </group>
+                ))}
         </group>
     );
 }
 
-function FullScreenGrid() {
+const MAX_STEPS = 100_000_000;
+
+function MyPoint({ start: [x1, y1], color }: { start: XY; color: string }) {
+    const {
+        grid,
+        radius,
+        size: [xStep, yStep],
+    } = useGrid();
+
+    const xLimit = grid.length - 1;
+    const yLimit = grid[0].length - 1;
+
+    const ref = useRef<any>();
+    const stepsRef = useRef(0);
+    const seed = useSeed();
+
+    const { width, height } = useThree((s) => s.viewport);
+
+    useEffect(() => {
+        stepsRef.current = 0;
+    }, [seed, x1, y1]);
+
+    let xIndex: number, yIndex: number, angle: number;
+
+    const step = radius * 0.4;
+
+    useFrame(() => {
+        if (ref.current) {
+            xIndex = Math.round((ref.current.position.x + 0.5 * width) / xStep);
+            yIndex = Math.round(
+                (ref.current.position.y + 0.5 * height) / yStep
+            );
+
+            xIndex = clamp(xIndex, 0, xLimit);
+            yIndex = clamp(yIndex, 0, yLimit);
+
+            angle = grid[xIndex][yIndex].angle;
+            console.log(xIndex, yIndex, angle);
+
+            ref.current.position.x += step * cos(angle);
+            ref.current.position.y += step * sin(angle);
+
+            stepsRef.current += 1;
+        }
+    });
+
+    return (
+        // @ts-ignore
+        <Point ref={ref} position={[x1, y1, 0]} color={color} />
+    );
+}
+
+function MyPoints() {
+    const seed = useSeed();
+    const [, , color] = useSeededColorPalette();
+
+    const { width, height } = useThree((s) => s.viewport);
+
+    const { numPoints, scale } = useControls('Points', {
+        numPoints: {
+            value: 1,
+            step: 1,
+        },
+        scale: 4,
+    });
+
+    const points = useMemo(() => {
+        const rnd = new Smush32(seed);
+        const rx = uniform(rnd, -0.5 * width, 0.5 * width);
+        const ry = uniform(rnd, -0.5 * height, 0.5 * height);
+
+        return new Array(numPoints).fill('x').map(() => [rx(), ry()] as XY);
+    }, [seed, width, height, numPoints]);
+
+    return (
+        <Points>
+            {/* @ts-ignore */}
+            <PointMaterial scale={scale} />
+            {points.map((p, i) => (
+                <MyPoint key={`${seed}-${i}`} start={p} color={color} />
+            ))}
+        </Points>
+    );
+}
+
+function FullScreenGrid({ children }: { children?: ReactNode }) {
     const { width, height } = useThree((s) => s.viewport);
 
     const { rowsAndColumns, frequency } = useControls('Grid', {
@@ -128,7 +197,7 @@ function FullScreenGrid() {
             step: 1,
         },
         frequency: {
-            value: 0.5,
+            value: 0.1,
             min: 0,
             max: 1,
             step: 0.01,
@@ -136,60 +205,52 @@ function FullScreenGrid() {
     });
 
     const [, color] = useSeededColorPalette();
-    const xStep = width / (rowsAndColumns - 1);
-    const yStep = height / (rowsAndColumns - 1);
-    const size: XY = useMemo(() => [xStep, yStep], [xStep, yStep]);
-    const radius = Math.min(...size) * 0.5;
-
-    const xs = useMemo(
-        () => range(-0.5 * width, 0.5 * width, xStep).concat(0.5 * width),
-        [xStep, width]
-    );
-    const ys = useMemo(
-        () => range(-0.5 * height, 0.5 * height, yStep).concat(0.5 * height),
-        [height, yStep]
-    );
 
     const seed = useSeed();
 
-    const grid = useMemo(() => {
+    const grid: IGrid = useMemo(() => {
         const noise = makeNoise2D(seed);
+
+        const xStep = width / (rowsAndColumns - 1);
+        const yStep = height / (rowsAndColumns - 1);
+        const radius = Math.min(xStep, yStep) * 0.5;
+
+        const xs = range(-0.5 * width, 0.5 * width, xStep).concat(0.5 * width);
+
+        const ys = range(-0.5 * height, 0.5 * height, yStep).concat(
+            0.5 * height
+        );
 
         const grid = xs.map((x, xi) =>
             ys.map((y, yi) => {
                 const cell: ICell = {
-                    index: [xi, yi],
-                    size,
-                    radius,
                     center: [x, y],
-                    angle: Math.PI * noise(x * frequency, y * frequency),
+                    angle: PI * noise(x * frequency, y * frequency),
                 };
                 return cell;
             })
         );
 
-        return grid;
-    }, [xs, ys, seed, frequency]);
+        return {
+            grid,
+            size: [xStep, yStep],
+            radius,
+        };
+    }, [seed, frequency, width, height, rowsAndColumns]);
 
-    const flatGrid = useMemo(() => grid.flatMap((x) => x), [grid]);
+    console.log(grid.grid[0][0].angle);
 
-    return (
-        <group>
-            {flatGrid.map((cell, i) => (
-                <MyLine key={i} cell={cell} />
-            ))}
-        </group>
-    );
+    return <GridContext.Provider value={grid}>{children}</GridContext.Provider>;
 }
 
 export function Sketch() {
     const seed = useSeed();
-    const [bg] = useSeededColorPalette();
+    const [bg, stroke] = useSeededColorPalette();
 
     return (
         <SketchSize>
             <Canvas
-                dpr={[1, 2]}
+                dpr={1}
                 orthographic
                 camera={{
                     position: [0, 0, 100],
@@ -203,9 +264,12 @@ export function Sketch() {
             >
                 <color attach="background" args={[bg]} />
                 <FrameExporter prefix="CS.16" />
-                {/* <NoAutoClear /> */}
+                <NoAutoClear />
 
-                <FullScreenGrid />
+                <FullScreenGrid>
+                    {/* <DrawNoiseLines color={stroke} /> */}
+                    <MyPoints />
+                </FullScreenGrid>
                 <OrbitControls />
             </Canvas>
         </SketchSize>
