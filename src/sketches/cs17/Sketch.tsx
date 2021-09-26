@@ -80,7 +80,6 @@ function DrawNoiseLines({ color = '#ffffff' }: { color?: string }) {
     const { grid, radius } = useGrid();
 
     const cells = useMemo(() => {
-        console.log('TRIGGER');
         return grid.flatMap((d) => d);
     }, [grid]);
 
@@ -263,7 +262,7 @@ export function Sketch() {
                 }}
             >
                 <color attach="background" args={[bg]} />
-                <FrameExporter prefix="CS.16" />
+                <FrameExporter prefix="CS.17" />
                 <NoAutoClear />
 
                 <FullScreenGrid>
