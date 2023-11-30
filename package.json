@@ -5,7 +5,7 @@
     "scripts": {
         "start": "vite",
         "dev": "vite",
-        "build": "tsc && vite build",
+        "build": "vite build",
         "serve": "vite preview",
         "remotion:start": "remotion preview src/videos/index.tsx",
         "remotion:render": "remotion render src/videos/index.tsx av1 out/av1.mp4",
