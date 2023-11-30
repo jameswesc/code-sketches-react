@@ -150,7 +150,7 @@ export function Sketch() {
                 }}
             >
                 <color attach="background" args={[bg]} />
-                <FrameExporter prefix="CS.14" />
+                <FrameExporter prefix="cs-210919" />
                 <IsometricRotation>
                     <Grid {...gridProps} stroke={stroke} />
                 </IsometricRotation>

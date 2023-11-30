@@ -93,7 +93,7 @@ export function Sketch() {
                 }}
             >
                 <color attach="background" args={[bg]} />
-                <FrameExporter prefix="CS.13" />
+                <FrameExporter prefix="cs-210918" />
                 <IsometricRotation>
                     <Lines />
                 </IsometricRotation>

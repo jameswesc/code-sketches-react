@@ -2,32 +2,32 @@ import React from 'react';
 import { Route } from 'wouter';
 
 import { SketchLayout } from '@/components/SketchLayout';
-import { Sketch as Sketch220917 } from '@/sketches/220917';
-import { Sketch as Sketch220918 } from '@/sketches/220918';
-import { Sketch as Sketch220919 } from '@/sketches/220919';
-import { Sketch as Sketch220920 } from '@/sketches/220920';
-import { Sketch as Sketch220921 } from '@/sketches/220921';
-import { Sketch as Sketch220925 } from '@/sketches/220925';
-import { Sketch as Sketch220926 } from '@/sketches/220926';
-import { Sketch as Sketch220927 } from '@/sketches/220927';
-import { Sketch as Sketch220928 } from '@/sketches/220928';
-import { Sketch as Sketch220929 } from '@/sketches/220929';
+import { Sketch as Sketch210917 } from '@/sketches/210917';
+import { Sketch as Sketch210918 } from '@/sketches/210918';
+import { Sketch as Sketch210919 } from '@/sketches/210919';
+import { Sketch as Sketch210920 } from '@/sketches/210920';
+import { Sketch as Sketch210921 } from '@/sketches/210921';
+import { Sketch as Sketch210925 } from '@/sketches/210925';
+import { Sketch as Sketch210926 } from '@/sketches/210926';
+import { Sketch as Sketch210927 } from '@/sketches/210927';
+import { Sketch as Sketch210928 } from '@/sketches/210928';
+import { Sketch as Sketch210929 } from '@/sketches/210929';
 
 function App(): JSX.Element {
     return (
         <SketchLayout
             sketch={
                 <>
-                    <Route path="/220917" component={Sketch220917} />
-                    <Route path="/220918" component={Sketch220918} />
-                    <Route path="/220919" component={Sketch220919} />
-                    <Route path="/220920" component={Sketch220920} />
-                    <Route path="/220921" component={Sketch220921} />
-                    <Route path="/220925" component={Sketch220925} />
-                    <Route path="/220926" component={Sketch220926} />
-                    <Route path="/220927" component={Sketch220927} />
-                    <Route path="/220928" component={Sketch220928} />
-                    <Route path="/220929" component={Sketch220929} />
+                    <Route path="/210917" component={Sketch210917} />
+                    <Route path="/210918" component={Sketch210918} />
+                    <Route path="/210919" component={Sketch210919} />
+                    <Route path="/210920" component={Sketch210920} />
+                    <Route path="/210921" component={Sketch210921} />
+                    <Route path="/210925" component={Sketch210925} />
+                    <Route path="/210926" component={Sketch210926} />
+                    <Route path="/210927" component={Sketch210927} />
+                    <Route path="/210928" component={Sketch210928} />
+                    <Route path="/210929" component={Sketch210929} />
 
                     <Route path="/">
                         <div style={{ padding: 80 }}>
@@ -35,7 +35,7 @@ function App(): JSX.Element {
                                 <li>
                                     <a
                                         style={{ textDecoration: 'underline' }}
-                                        href="/220917"
+                                        href="/210917"
                                     >
                                         Sketch 17/09/22
                                     </a>
@@ -43,7 +43,7 @@ function App(): JSX.Element {
                                 <li>
                                     <a
                                         style={{ textDecoration: 'underline' }}
-                                        href="/220918"
+                                        href="/210918"
                                     >
                                         Sketch 18/09/22
                                     </a>
@@ -51,7 +51,7 @@ function App(): JSX.Element {
                                 <li>
                                     <a
                                         style={{ textDecoration: 'underline' }}
-                                        href="/220919"
+                                        href="/210919"
                                     >
                                         Sketch 19/09/22
                                     </a>
@@ -59,7 +59,7 @@ function App(): JSX.Element {
                                 <li>
                                     <a
                                         style={{ textDecoration: 'underline' }}
-                                        href="/220920"
+                                        href="/210920"
                                     >
                                         Sketch 20/09/22
                                     </a>
@@ -67,7 +67,7 @@ function App(): JSX.Element {
                                 <li>
                                     <a
                                         style={{ textDecoration: 'underline' }}
-                                        href="/220921"
+                                        href="/210921"
                                     >
                                         Sketch 21/09/22
                                     </a>
@@ -75,7 +75,7 @@ function App(): JSX.Element {
                                 <li>
                                     <a
                                         style={{ textDecoration: 'underline' }}
-                                        href="/220925"
+                                        href="/210925"
                                     >
                                         Sketch 25/09/22
                                     </a>
@@ -83,7 +83,7 @@ function App(): JSX.Element {
                                 <li>
                                     <a
                                         style={{ textDecoration: 'underline' }}
-                                        href="/220926"
+                                        href="/210926"
                                     >
                                         Sketch 26/09/22
                                     </a>
@@ -91,7 +91,7 @@ function App(): JSX.Element {
                                 <li>
                                     <a
                                         style={{ textDecoration: 'underline' }}
-                                        href="/220927"
+                                        href="/210927"
                                     >
                                         Sketch 27/09/22
                                     </a>
@@ -99,7 +99,7 @@ function App(): JSX.Element {
                                 <li>
                                     <a
                                         style={{ textDecoration: 'underline' }}
-                                        href="/220928"
+                                        href="/210928"
                                     >
                                         Sketch 28/09/22
                                     </a>
@@ -107,7 +107,7 @@ function App(): JSX.Element {
                                 <li>
                                     <a
                                         style={{ textDecoration: 'underline' }}
-                                        href="/220929"
+                                        href="/210929"
                                     >
                                         Sketch 29/09/22
                                     </a>

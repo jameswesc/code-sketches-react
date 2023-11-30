@@ -24,7 +24,7 @@ export function IsometricCanvas({
             }}
         >
             {background && <color attach="background" args={[background]} />}
-            <FrameExporter prefix="cs-220917" />
+            <FrameExporter prefix="cs-210917" />
             <IsometricRotation>
                 <ScaleToFit size={40}>{children}</ScaleToFit>
             </IsometricRotation>
