@@ -2,12 +2,6 @@
 
 A series of code sketches from September 2021. This application uses react. Most sketches were created using [Three.js](https://threejs.org/) and [@react-three/fiber](https://docs.pmnd.rs/react-three-fiber/getting-started/introduction).
 
-## Todo
-
-- [ ] Add some output images
-- [ ] Add individual readmes for each sketch (optional)
-- [ ] Add title / description SEO stuff
-
 ## CS 210917 - 17 Sep 2021
 
 ![Example Output](src/outputs/cs-210917-2958596.png)
@@ -24,26 +18,32 @@ A series of code sketches from September 2021. This application uses react. Most
 
 [📼 Timelapse Video](https://www.youtube.com/watch?v=GVJP7jzwH6g)
 
-Note: as seen in the video, this sketch used to be named CS15, befure I changed the naming format.
-
 ![Example Output](src/outputs/cs-210920.jpeg)
 
 ## CS 210921 - 21 Sep 2021
 
-[📼 Timelapse Video](https://www.youtube.com/watch?v=GVJP7jzwH6g)
+[📼 Timelapse Video](https://youtu.be/WHndQrt2qbw?si=CNA99uUukktvwwC3)
 
-Note: as seen in the video, this sketch used to be named CS16, befure I changed the naming format.
-
-![Example Output](src/outputs/cs-210920.jpeg)
+![Example Output](src/outputs/cs-210921.png)
 
 ## CS 210925 - 25 Sep 2021
 
+[📼 Timelapse Video](https://www.youtube.com/watch?v=CSriW4C3N3M)
+
+![Example Output](src/outputs/cs-210925.jpeg)
+
 ## CS 210926 - 26 Sep 2021
+
+![Example Output](src/outputs/cs-210926.png)
 
 ## CS 210927 - 27 Sep 2021
 
+![Example Output](src/outputs/cs-210927.png)
+
 ## CS 210928 - 28 Sep 2021
+
+![Example Output](src/outputs/cs-210928.png)
 
 ## CS 210929 - 29 Sep 2021
 
-
+![Example Output](src/outputs/cs-210929.png)
