@@ -11,7 +11,7 @@ export function DownloadFrameButton({ prefix }: { prefix?: string }) {
     return (
         <IconButton
             onClick={() => {
-                downloadNextFrame(`${prefix + '-'}${seed}.png`);
+                downloadNextFrame();
             }}
         >
             <DownloadIcon />
